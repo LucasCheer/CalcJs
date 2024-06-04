@@ -4,11 +4,14 @@
 *{
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
+  box-sizing: content-box;
   font-family: system-ui, -apple-system,sans-serif;
 }
 button{
   all:unset;
+  &:hover{
+    cursor: pointer;
+  }
 }
 
 /* Estilos Generales */
@@ -23,34 +26,59 @@ body{
   justify-content: center;
 }
 
-.container{
-  background-color: rgb(255, 255, 255);
-  font-size: 1.8rem;
-  width: 500px;
-  border-radius: 12px;
-  overflow: hidden;
-  
 
-    & .display{
+/* Calculator */
+
+.container{
+  background-color: black;
+  font-size: 1.8rem;
+  width: 400px;
+  border-radius: 12px;
+  border: 12px solid black;
+  border-top: 5px;
+  overflow: hidden;
+
+  
+    & .input-container{
       width: 100%;
       height: 100px;
+      margin: auto;
 
       color: white;
-      background-color: black;
-      font-size: 3rem;
-      padding: 0 1rem;
-
+      background-color: rgb(0, 0, 0);
+      padding: 0 0;
       display: flex;
-      justify-content: left;
+      justify-content: center;
       align-items: center;
+
+        & #input {
+          all:unset;
+          width: 100%;
+          height: 70px;
+          padding: 0 1rem;
+          
+          border-radius: 10px;
+          overflow: hidden;
+
+          font-size: 2.6rem;
+          background-color: rgb(53, 53, 53);
+          color: white;
+
+
+        }
     }
 
     & .buttons{
       width: 100%;
       height: 100%;
+
       display: grid;
       grid-template-columns: 25% 25% 25% 25%;
-      grid-template-rows: 120px 120px 120px 120px 120px;
+      grid-template-rows: 100px 100px 100px 100px 100px;
+
+      border-radius: 12px;
+      overflow: hidden;
+    
 
       & .item{
         display: flex;
@@ -62,25 +90,41 @@ body{
         background-color: rgb(36, 36, 36);
         color: white;
 
-        border-radius: 0;
-  
+        transition-duration: 100ms;
       }
       & .item:hover{
-        background-color: aliceblue;
-        color: black;
+        background-color: rgb(68, 68, 68);
+        color: rgb(255, 255, 255);
       }
       & .itemZero {
         grid-row: 5/6;
         grid-column: 1/3;
       }
       & .item1 {
-        background-color: rgb(128, 92, 26);
-
+        background-color: rgb(26, 99, 128);
+        &:hover{
+          background-color: rgb(38, 146, 189);
+          color: white;
+        }
       }
+      
       & .item3{
-        background-color: rgb(7, 92, 92);
+        background-color: rgb(138, 138, 138);
+        &:hover{
+          background-color: rgb(177, 177, 177);
+          color: white;
+        }
       }
-
+      #equal{
+        background-color: rgb(60, 95, 8);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+          &:hover{
+            background-color: rgb(87, 138, 12);
+            color: white;
+          }
+      }
     }
-
 }
