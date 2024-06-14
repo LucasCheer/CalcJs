@@ -27,9 +27,13 @@ function operation(a, operator, b){
         case "*":
             return a * b;
         case "/":
-            return a / b;
+            if(b === 0){
+                return "Error :("
+            }else{
+                return a / b;
+            }
         default:
-            return "error"
+            return "error";
     }
 };
 function viewResult (){
@@ -102,11 +106,23 @@ clearDigit.addEventListener("click", ()=>{
 })
 
 document.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-        e.preventDefault(); // Prevenir comportamiento predeterminado
+    const key = e.key;
+    if (key === "Enter") {
+        e.preventDefault(); 
         asignarSegundoNum(input.value);
         input.value = '';
         viewResult();
-        console.log('Enter pressed: input cleared and result shown'); // Depuración
+    }
+    switch(key){
+        case "+":
+        case "-":
+        case "*":
+        case "/":
+            e.preventDefault();
+            operationVariables.operator = key;
+            asignarPrimerNum(input.value)
+            input.value = "";
+            input.focus();
+            break;
     }
 });
